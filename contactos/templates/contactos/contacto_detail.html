@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{cliente.nombre}}{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+          <h2 class="section-heading mb-4">{{ contacto.nombres }} {{ contacto.apellidos }} {% if request.user.is_staff %}
+              <a class="btn btn-outline-info" href="{% url 'contactos:update' contacto.id %}"><i class="far fa-edit"></i></a>
+              <a class="btn btn-outline-danger" href="{% url 'contactos:delete' contacto.id %}"><i class="far fa-trash-alt"></i></a>
+              {% endif %}</h2>
+              <br>
+              <div class="table-responsive">
+                  <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td><strong>Nivel</strong></td>
+                    <td>{{ contacto.nivel }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nombre</strong></td>
+                    <td>{{ contacto.nombres }} {{ contacto.apellidos }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cargo</strong></td>
+                    <td>{{ contacto.cargo }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email</strong></td>
+                    <td>{{ contacto.email }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Telefono</strong></td>
+                    <td>{{ contacto.telefono }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Celular</strong></td>
+                    <td>{{ contacto.celular }}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Horario</strong></td>
+                    {% if contacto.horario == "día" %}
+                      <td><i class="fas fa-sun"></i> Habil</td>
+                    {% endif %}
+                    {% if contacto.horario == "noche" %}
+                      <td><i class="fas fa-moon"></i> No Habil</td>
+                    {% endif %}    
+                    </tr>
+                </tbody>
+              </table>
+              <div class="text-center">
+                  <a class="btn btn-dark btn-block" href="{% url 'contactos:contactos' contacto.cliente.id contacto.cliente|slugify  %}">Regresar...</a>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

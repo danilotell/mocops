@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Borrar Contacto{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+        <div>
+          <form action="" method="post">{% csrf_token %}
+            <p>¿Estás seguro de que quieres borrar el contacto: <b>"{{ contacto.nombres }} {{ contacto.apellidos }}"</b>?</p>
+            <p><input type="submit" class="btn btn-danger" value="Sí, borrar contacto" />
+            <a class="btn btn-info" href="{% url 'contactos:contacto' contacto.id %}">Cancelar</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

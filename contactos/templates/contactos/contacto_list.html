@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container mb-4">
+        <div class="row mt-3">
+                <div class="col-md-9 mx-auto">
+                        <h2 class="mb-4">Matriz de escalamiento {% if client_title %} - {{ client_title }} {% endif %}</h2>
+                        <div><a class="btn btn-success" href="{% url 'contactos:create' %}">Nuevo <i class="fas fa-plus"></i></a></div><br>
+                        {% if contacto_list %}
+                        <table class="table">
+                                <thead>
+                                        <tr style="text-align: center;">
+                                          <th scope="col">Nivel</th>
+                                          <th scope="col">Nombres</th>
+                                          <th scope="col">Apellidos</th>
+                                          <th scope="col">Cargo</th>
+                                          <th scope="col">email</th>
+                                          <th scope="col">telefono</th>
+                                          <th scope="col">Celular</th>
+                                          <th scope="col">Horario</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+    {% for contacto in contacto_list %}
+    <tr>
+            <td>{{ contacto.nivel }}</td>
+            <td><a href="{% url 'contactos:contacto' contacto.id %}">{{ contacto.nombres }}</a></td>
+            <td>{{ contacto.apellidos }}</td>
+            <td>{{ contacto.cargo }}</td>
+            <td>{{ contacto.email }}</td>
+            <td>{{ contacto.telefono }}</td>
+            <td>{{ contacto.celular }}</td>
+            {% if contacto.horario == "día" %}
+            <td><i class="fas fa-sun"></i></td>
+            {% endif %}
+            {% if contacto.horario == "noche" %}
+            <td><i class="fas fa-moon"></i></td>
+            {% endif %}    
+        </tr>
+        
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay contactos :(</p>
+{% endif %}
+        </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
