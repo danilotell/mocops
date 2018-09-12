@@ -1,0 +1,103 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{cliente.nombre}}{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+          {% if cliente.logo %}
+          <img src="{{cliente.logo.url}}" class="rounded mx-auto d-block" alt="Responsive image">
+          {% endif %}
+          <hr>
+          <div></div>
+        <h2 class="section-heading mb-4">{{cliente.nombre}}
+            {% if request.user.is_staff %}
+          <a class="btn btn-outline-info" href="{% url 'clientes:update' cliente.id %}"><i class="far fa-edit"></i></a>
+          <a class="btn btn-outline-danger" href="{% url 'clientes:delete' cliente.id %}"><i class="far fa-trash-alt"></i></a>
+          {% endif %}
+        </h2>
+        <div>
+          {{cliente.descripcion}}
+          <br><br>
+          <p><a href="{{cliente.link}}">{{cliente.link}}</a></p>
+          <br>
+          <div class="table-responsive">
+  <table class="table table-bordered">
+  <thead>
+    <tr style="text-align: center;">
+      <th scope="col">Codigo CK</th>
+      <th scope="col">Inicio de Proyecto</th>
+      <th scope="col">Fin de Proyecto</th>
+      <th scope="col">NOC</th>
+      <th scope="col">SOC</th>
+      <th scope="col">POC</th>
+      <th scope="col">BOC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;">
+      <td>{{cliente.ck}}</td>
+      <td>{{cliente.inicio}}</td>
+      <td>{{cliente.fin}}</td>
+      {% if cliente.noc %}
+      <td><i class="fas fa-check" style="color:green"></i></td>
+      {% else %}
+      <td><i class="fas fa-times" style="color:red"></i></td>
+      {% endif %}
+
+      {% if cliente.soc %}
+      <td><i class="fas fa-check" style="color:green"></i></td>
+      {% else %}
+      <td><i class="fas fa-times" style="color:red"></i></td>
+      {% endif %}
+
+      {% if cliente.poc %}
+      <td><i class="fas fa-check" style="color:green"></i></td>
+      {% else %}
+      <td><i class="fas fa-times" style="color:red"></i></td>
+      {% endif %}
+
+      {% if cliente.boc %}
+      <td><i class="fas fa-check" style="color:green"></i></td>
+      {% else %}
+      <td><i class="fas fa-times" style="color:red"></i></td>
+      {% endif %}
+    </tr>
+  </tbody>
+</table>
+</div>
+<br><br>
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead>
+      <tr style="text-align: center;">
+        <th scope="col">Anexos</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">Vencimiento del Proyecto</td>
+            <td style="text-align: center;"><span class="badge badge-secondary">{{ cliente.fin|timeuntil }}</span></td>
+          </tr>
+      <tr>
+          <td style="text-align: center;">Matriz de escalamiento</td>
+          <td style="text-align: center;"><a class="btn btn-outline-secondary" href="{% url 'contactos:contactos' cliente.id cliente.nombre|slugify %}"><i class="fas fa-users"></i></a></td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">ANS</td>
+            <td style="text-align: center;"><a class="btn btn-outline-secondary" href="#"><i class="far fa-clock"></i></a></td>
+          </tr>
+    </tbody>
+  </table>
+</div>
+<div class="text-center">
+    <a class="btn btn-dark btn-block" href="{% url 'clientes:clientes' %}">Regresar...</a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

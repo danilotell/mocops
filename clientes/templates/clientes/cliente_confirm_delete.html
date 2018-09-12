@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Borrar Cliente{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+        <div>
+          <form action="" method="post">{% csrf_token %}
+            <p>¿Estás seguro de que quieres borrar el cliente: <b>"{{ cliente }}"</b>?</p>
+            <p><input type="submit" class="btn btn-danger" value="Sí, borrar cliente" />
+            <a class="btn btn-info" href="{% url 'clientes:cliente' cliente.id cliente.nombre|slugify %}">Cancelar</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Actualizar Cliente{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3 mb-5">
+      <div class="col-md-9 mx-auto">
+        {% if 'ok' in request.GET %}
+        <div class="alert alert-success" role="alert">
+            Cliente actualizado correctamente <a href="{% url 'clientes:cliente' cliente.id cliente.nombre|slugify %}"> ver resultado.</a>
+          </div>
+        {% endif %}
+        <form action="" method="post">{% csrf_token %}
+            <p>{{ form.nombre }}</p>
+            <p>{{ form.descripcion }}</p>
+            <p>{{ form.logo }}</p>
+
+            
+            <div class="table-responsive">
+                <table class="table">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">Sitio Web</th>
+                    <th scope="col">CK</th>
+                    <th scope="col">Fecha inicio proyecto</th>
+                    <th scope="col">Fecha fin proyecto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>{{form.link}}</td>
+                    <td>{{form.ck}}</td>
+                    <td>{{form.inicio}}</td>
+                    <td>{{form.fin}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                      <tr style="text-align: center;">
+                        <th scope="col">NOC</th>
+                        <th scope="col">SOC</th>
+                        <th scope="col">POC</th>
+                        <th scope="col">BOC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;">{{ form.noc }}</td>
+                            <td style="text-align: center;">{{ form.soc }}</td>
+                            <td style="text-align: center;">{{ form.poc }}</td>
+                            <td style="text-align: center;">{{ form.boc }}</td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+          <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-block" value="Actualizar Cliente" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
