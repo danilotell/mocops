@@ -1,0 +1,326 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Servicios{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+          <h2 class="section-heading mb-4">Servicios MOC {% if request.user.is_staff %}
+            
+              {% endif %}</h2>
+              <br>
+           
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">NOC</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>Monitoreo de disponibilidad</td>
+                    {% if servicio.nocdis %}
+                    <td><i class="fas fa-check" style="color:green"></i></td>
+                    {% else %}
+                    <td><i class="fas fa-times" style="color:red"></i></td>
+                    {% endif %}                    
+                  </tr>
+
+                  <tr style="text-align: center;">
+                      <td>Monitoreo de capacidad</td>        
+                      {% if servicio.noccap %}
+                      <td><i class="fas fa-check" style="color:green"></i></td>
+                      {% else %}
+                      <td><i class="fas fa-times" style="color:red"></i></td>
+                      {% endif %}
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td>Gestión de métricas de supervisión</td>        
+                        {% if servicio.nocmet %}
+                        <td><i class="fas fa-check" style="color:green"></i></td>
+                        {% else %}
+                        <td><i class="fas fa-times" style="color:red"></i></td>
+                        {% endif %}
+                      </tr>
+
+                      <tr style="text-align: center;">
+                          <td>Administración de información de seguridad</td>        
+                          {% if servicio.nocsim %}
+                          <td><i class="fas fa-check" style="color:green"></i></td>
+                          {% else %}
+                          <td><i class="fas fa-times" style="color:red"></i></td>
+                          {% endif %}
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>Gestión de inventarios</td>        
+                            {% if servicio.nocinv %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+
+                </tbody>
+              </table>
+              </div>
+              <br><br>
+
+         
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">SOC</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>Gestión de eventos e información de seguridad</td>
+                    {% if servicio.socsiem %}
+                    <td><i class="fas fa-check" style="color:green"></i></td>
+                    {% else %}
+                    <td><i class="fas fa-times" style="color:red"></i></td>
+                    {% endif %}                    
+                  </tr>
+
+                  <tr style="text-align: center;">
+                      <td>Gestión de Amenazas o Anomalías</td>        
+                      {% if servicio.socthreat %}
+                      <td><i class="fas fa-check" style="color:green"></i></td>
+                      {% else %}
+                      <td><i class="fas fa-times" style="color:red"></i></td>
+                      {% endif %}
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td>Gestón de escenarios de riesgo</td>        
+                        {% if servicio.socrisk %}
+                        <td><i class="fas fa-check" style="color:green"></i></td>
+                        {% else %}
+                        <td><i class="fas fa-times" style="color:red"></i></td>
+                        {% endif %}
+                      </tr>
+
+                      <tr style="text-align: center;">
+                          <td>Gestión de cumplimiento</td>        
+                          {% if servicio.soccomp %}
+                          <td><i class="fas fa-check" style="color:green"></i></td>
+                          {% else %}
+                          <td><i class="fas fa-times" style="color:red"></i></td>
+                          {% endif %}
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>Gestión de incidentes</td>        
+                            {% if servicio.socinc %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Monitoreo de integridad de archivos</td>        
+                            {% if servicio.socfim %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+
+                </tbody>
+              </table>
+              </div>
+              <br><br>
+
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">POC</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>Ethical Hacking</td>
+                    {% if servicio.poceh %}
+                    <td><i class="fas fa-check" style="color:green"></i></td>
+                    {% else %}
+                    <td><i class="fas fa-times" style="color:red"></i></td>
+                    {% endif %}                    
+                  </tr>
+
+                  <tr style="text-align: center;">
+                      <td>Gestión de vulnerabilidades</td>        
+                      {% if servicio.pocgv %}
+                      <td><i class="fas fa-check" style="color:green"></i></td>
+                      {% else %}
+                      <td><i class="fas fa-times" style="color:red"></i></td>
+                      {% endif %}
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td>Análisis de vulnerabilidades</td>        
+                        {% if servicio.pocav %}
+                        <td><i class="fas fa-check" style="color:green"></i></td>
+                        {% else %}
+                        <td><i class="fas fa-times" style="color:red"></i></td>
+                        {% endif %}
+                      </tr>
+
+                      <tr style="text-align: center;">
+                          <td>Administracion delegada</td>        
+                          {% if servicio.pocadm %}
+                          <td><i class="fas fa-check" style="color:green"></i></td>
+                          {% else %}
+                          <td><i class="fas fa-times" style="color:red"></i></td>
+                          {% endif %}
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>Monitoreo de amenazas persistentes</td>        
+                            {% if servicio.pocapt %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Deception services</td>        
+                            {% if servicio.pochpot %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>MOC Educate - Gestión del cambio</td>        
+                            {% if servicio.poceducate %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Software - Hardware As Services</td>        
+                            {% if servicio.pochsas %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+
+                </tbody>
+              </table>
+              </div>
+              <br><br>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th scope="col">BOC</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>Gestión de Activos</td>
+                    {% if servicio.bocga %}
+                    <td><i class="fas fa-check" style="color:green"></i></td>
+                    {% else %}
+                    <td><i class="fas fa-times" style="color:red"></i></td>
+                    {% endif %}                    
+                  </tr>
+
+                  <tr style="text-align: center;">
+                      <td>Gestión de Eventos</td>        
+                      {% if servicio.bocge %}
+                      <td><i class="fas fa-check" style="color:green"></i></td>
+                      {% else %}
+                      <td><i class="fas fa-times" style="color:red"></i></td>
+                      {% endif %}
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td>Gestión de Incidentes</td>        
+                        {% if servicio.bocgi %}
+                        <td><i class="fas fa-check" style="color:green"></i></td>
+                        {% else %}
+                        <td><i class="fas fa-times" style="color:red"></i></td>
+                        {% endif %}
+                      </tr>
+
+                      <tr style="text-align: center;">
+                          <td>Gestión de Riesgos</td>        
+                          {% if servicio.bocri %}
+                          <td><i class="fas fa-check" style="color:green"></i></td>
+                          {% else %}
+                          <td><i class="fas fa-times" style="color:red"></i></td>
+                          {% endif %}
+                        </tr>
+
+                        <tr style="text-align: center;">
+                            <td>Gestión de Cumplimiento</td>        
+                            {% if servicio.boccump %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Gestión de Planes</td>        
+                            {% if servicio.bocplan %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Gestión de Indicadores</td>        
+                            {% if servicio.bocind %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+                          <tr style="text-align: center;">
+                            <td>Gestión de Ciberseguridad</td>        
+                            {% if servicio.boccs %}
+                            <td><i class="fas fa-check" style="color:green"></i></td>
+                            {% else %}
+                            <td><i class="fas fa-times" style="color:red"></i></td>
+                            {% endif %}
+                          </tr>
+
+
+                </tbody>
+              </table>
+              </div>
+              <br><br>
+              <div class="text-center">
+                  
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
